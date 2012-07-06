@@ -144,19 +144,33 @@
     return [obj1 compare:obj2 options:NSNumericSearch];    
   }];
   
-  for (NSString *categoryId in sortedArray) {
+  int countOfContents = [sortedArray count];
+  // Create a temporary array of tableData
+  for (NSUInteger i = 0; i < countOfContents; i++) {  
+    
+    NSString *categoryId = [sortedArray objectAtIndex:i];
     NSString *strValue = [dataDict objectForKey:categoryId];
+    // Create a new name with nonsense data     
+    
+    // Create a new name with nonsense data
+    //Contents *tempName = [self createNameWithNonsenseDataWithIndex:i];
+    Contents *tempName = [[Contents alloc] init];
+    tempName.sectionName = categoryId;
+    tempName.contentName = strValue;
+    // Add it to the temporary array
+    [self.tableData addObject:tempName]; 
+  }
+  /*
+  for (NSString *categoryId in sortedArray) {
+   
     NSLog(@"[dataDict objectForKey:categoryId] === %@",strValue);
     [self.tableData addObject:strValue]; 
   }
-  /* TODO
-  // Create a new name with nonsense data
-  BNName *tempName = [self createNameWithNonsenseDataWithIndex:i];
-  
-  // Add it to the temporary array
-  [self.tableData addObject:tempName];  
    */
+  /* TODO*/
+
   
+     
   // 把表视图添加到窗口
   myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 420)];
   [myTableView setDelegate:self];
@@ -324,14 +338,12 @@
   [alert show];
   */
   BookViewController *detailViewController = [[BookViewController alloc] initWithNibName:nil bundle:nil];
-  
-  detailViewController.sectionName = [self.tableData objectAtIndex:indexPath.row];
+  NSString *tempSectionName = [[self.tableData objectAtIndex:indexPath.row] sectionName];
+  NSLog(@"tempSectionName: %@", tempSectionName);
+  detailViewController.sectionName = tempSectionName;
   
   [self.navigationController pushViewController:detailViewController animated:YES];
   
- // UITableViewCell
- // self.window.rootViewController = self.viewController;
-  //[self.window makeKeyAndVisible]; 
   NSLog(@"Table row has been tapped end!");
   //[UIView commitAnimations];
   

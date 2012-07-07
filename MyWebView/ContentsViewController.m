@@ -347,8 +347,11 @@
   NSLog(@"Table row has been tapped end!");
   //[UIView commitAnimations];
   
-  [self.view.superview addSubview:detailViewController.view];
-  [self.view removeFromSuperview];
+  //[self.view.superview addSubview:detailViewController.view];
+  //[self.view removeFromSuperview];
+  //[self.view setHidden:YES];
+  detailViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+  [self presentModalViewController:detailViewController animated:YES];
 }
 
 @end

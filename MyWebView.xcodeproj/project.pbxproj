@@ -103,6 +103,8 @@
 		3FDB1AC615A0967600A8628A /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDB1AC515A0967600A8628A /* GDataXMLNode.m */; };
 		3FE257A315A715250047A722 /* ContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE257A215A715250047A722 /* ContentsViewController.m */; };
 		3FE257B015A731250047A722 /* Contents.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE257AF15A731230047A722 /* Contents.m */; };
+		3FE257C315A7BAF90047A722 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE257C115A7BAF90047A722 /* bg.png */; };
+		3FE257C415A7BAF90047A722 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE257C215A7BAF90047A722 /* bg@2x.png */; };
 		3FEC90E4159F527700109B53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEC90E3159F527700109B53 /* UIKit.framework */; };
 		3FEC90E6159F527700109B53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEC90E5159F527700109B53 /* Foundation.framework */; };
 		3FEC90E8159F527700109B53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEC90E7159F527700109B53 /* CoreGraphics.framework */; };
@@ -217,6 +219,8 @@
 		3FE257AD15A723290047A722 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		3FE257AE15A731220047A722 /* Contents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contents.h; sourceTree = "<group>"; };
 		3FE257AF15A731230047A722 /* Contents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contents.m; sourceTree = "<group>"; };
+		3FE257C115A7BAF90047A722 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		3FE257C215A7BAF90047A722 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		3FEC90DF159F527700109B53 /* MyWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FEC90E3159F527700109B53 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3FEC90E5159F527700109B53 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -365,6 +369,8 @@
 		3F8E9307159FE7EE0026FD27 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				3FE257C115A7BAF90047A722 /* bg.png */,
+				3FE257C215A7BAF90047A722 /* bg@2x.png */,
 				3F98225115A4725A00380CD9 /* Default-Landscape~ipad.png */,
 				3F98225215A4725A00380CD9 /* Default-Portrait~ipad.png */,
 				3F98225315A4725A00380CD9 /* Default.png */,
@@ -595,6 +601,8 @@
 				3F98225815A4725A00380CD9 /* Default@2x.png in Resources */,
 				3F30C55B15A5ED8A00A0C81D /* contents.plist in Resources */,
 				3F30C56215A5F10500A0C81D /* content.plist in Resources */,
+				3FE257C315A7BAF90047A722 /* bg.png in Resources */,
+				3FE257C415A7BAF90047A722 /* bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

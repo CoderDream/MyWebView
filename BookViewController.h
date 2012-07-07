@@ -14,4 +14,5 @@
 }
 @property (nonatomic,retain) UIWebView *myWebView;
 @property (nonatomic,retain) NSString *sectionName;
+-(void) buttonClicked ;
 @end

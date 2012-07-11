@@ -14,6 +14,7 @@
 @synthesize myTableView;
 @synthesize tableData;
 @synthesize contentsData;
+@synthesize bookViewController = _bookViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -112,7 +113,7 @@
 	NSString *baseDirectory = [homePath substringToIndex:
                              [homePath length]-[executableName length]-1];	
 	
-	NSString *filePath = [NSString stringWithFormat:@"%@/content.plist",baseDirectory];
+	NSString *filePath = [NSString stringWithFormat:@"%@/contents.plist",baseDirectory];
   NSLog(@"filePath: %@",filePath);
 	//NSDictionary *dataDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
 	NSMutableDictionary *dataDict = 
@@ -328,28 +329,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
   NSLog(@"Table row %d has been tapped", indexPath.row);
-  /*
-  NSString *messageString = [NSString stringWithFormat:@"You tapped row %d", indexPath.row];
-  
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Row tapped" message:messageString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-  
-  [alert show];
-  */
-  BookViewController *detailViewController = [[BookViewController alloc] initWithNibName:nil bundle:nil];
+   
+  bookViewController = [[BookViewController alloc] initWithNibName:nil bundle:NULL];
+ // bookViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+  bookViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
   NSString *tempSectionName = [[self.tableData objectAtIndex:indexPath.row] sectionName];
   NSLog(@"tempSectionName: %@", tempSectionName);
-  detailViewController.sectionName = tempSectionName;
-  
-  [self.navigationController pushViewController:detailViewController animated:YES];
-  
-  NSLog(@"Table row has been tapped end!");
-  //[UIView commitAnimations];
-  
-  //[self.view.superview addSubview:detailViewController.view];
-  //[self.view removeFromSuperview];
-  //[self.view setHidden:YES];
-  detailViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-  [self presentModalViewController:detailViewController animated:YES];
+  bookViewController.sectionName = tempSectionName;
+  [self presentModalViewController:bookViewController animated:YES];
+  [bookViewController release];
 }
 
 @end

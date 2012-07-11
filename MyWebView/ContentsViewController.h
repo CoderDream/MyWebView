@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookViewController.h"
 
-@interface ContentsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ContentsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+  
+  BookViewController *bookViewController;
+}
+
+@property (strong, nonatomic) BookViewController *bookViewController;
 
 @property (nonatomic, strong) UITableView *myTableView;
 

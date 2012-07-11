@@ -22,6 +22,12 @@
 @synthesize myWebView;
 @synthesize sectionName;
 
+/*
+@synthesize totalPages;
+@synthesize currentPage;
+@synthesize textLabel;
+ */
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
@@ -153,7 +159,134 @@
   [[self view] addGestureRecognizer:recognizer];  
   [recognizer release];  
    */
+  
+  
+  // 
+  NSError *error = nil;
+  /*
+  NSString *html = @"<ul>"
+  "<li><input type='image' name='input1' value='string1value' /></li>"
+  "<li><input type='image' name='input2' value='string2value' /></li>"
+  "</ul>"
+  "<span class='spantext'><b>Hello World 1</b></span>"
+  "<span class='spantext'><b>Hello World 2</b></span>";
+  */
+  // 加入htmlPath参数后，弹出窗口有页面来源信息，否则显示为null
+  NSString *html = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"section-0003.html"];
+  NSLog(@"html %@", html);
+  
+  //HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
+  HTMLParser *parser = [[HTMLParser alloc] initWithContentsOfURL:[NSURL fileURLWithPath:html] error:&error];
+  
+  if (error) {
+    NSLog(@"Error: %@", error);
+    return;
+  }
+  /*  
+  HTMLNode *bodyNode = [parser body];
+  
+  NSArray *inputNodes = [bodyNode findChildTags:@"input"];
+  
+  for (HTMLNode *inputNode in inputNodes) {
+    if ([[inputNode getAttributeNamed:@"name"] isEqualToString:@"input2"]) {
+      NSLog(@"%@", [inputNode getAttributeNamed:@"value"]); //Answer to first question
+    }
+  }
+  
+  NSArray *spanNodes = [bodyNode findChildTags:@"span"];
+  
+  for (HTMLNode *spanNode in spanNodes) {
+    if ([[spanNode getAttributeNamed:@"class"] isEqualToString:@"spantext"]) {
+      NSLog(@"%@", [spanNode rawContents]); //Answer to second question
+    }
+  }
+   */
+  
+  // first get total
+  HTMLNode *bodyNode = [parser body];  
+  
+  // get tag <title>  
+  NSArray *spanNodesTitle = [bodyNode findChildTags:@"title"];
+  
+  for (HTMLNode *spanNodeTitle in spanNodesTitle) {
+    //if ([[spanNode getAttributeNamed:@"class"] isEqualToString:@"spantext"]) {
+      NSLog(@"%@", [spanNodeTitle rawContents]); //Answer to second question
+    //}
+  }
+  
+  // Paragraph
+  NSArray *spanNodesP = [bodyNode findChildTags:@"p"];
+  int pCount = [spanNodesP count];
+  NSLog(@"count %d", pCount);
+  for (HTMLNode *spanNodeP in spanNodesP) {
+    //if ([[spanNode getAttributeNamed:@"class"] isEqualToString:@"spantext"]) {
+    NSLog(@"%@", [spanNodeP rawContents]); //Answer to second question
+    //}
+  }
+  
+  [parser release];  
 }
+
+//访问网页源码  
+-(NSString *)urlString:(NSString *)value{  
+  NSURL *url = [NSURL URLWithString:value];  
+  NSData *data = [NSData dataWithContentsOfURL:url];    
+  //解决中文乱码,用GBK  
+  NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);      
+  NSString *retStr = [[NSString alloc] initWithData:data encoding:enc];  
+  return retStr;  
+}  
+/*  
+ 作用:截取从value1到value2之间的字符串  
+ str:要处理的字符串  
+ value1:左边匹配字符串  
+ value2:右边匹配字符串  
+ */  
+-(NSString *)str:(NSString *)str value1:(NSString *)value1 value2:(NSString *)value2{  
+  //i:左边匹配字符串在str中的下标  
+  int i;  
+  //j:右边匹配字符串在str1中的下标  
+  int j;  
+  //该类可以通过value1匹配字符串  
+  NSRange range1 = [str rangeOfString:value1];  
+  //判断range1是否匹配到字符串  
+  if(range1.length>0){  
+    //把其转换为NSString  
+    NSString *result1 = NSStringFromRange(range1);  
+    i = [self indexByValue:result1];  
+    //原因:加上匹配字符串的长度从而获得正确的下标  
+    i = i+[value1 length];  
+  }  
+  //通过下标，删除下标以前的字符  
+  NSString *str1 = [str substringFromIndex:i];  
+  NSRange range2 = [str1 rangeOfString:value2];  
+  if(range2.length>0){  
+    NSString *result2 = NSStringFromRange(range2);  
+    j = [self indexByValue:result2];  
+  }  
+  NSString *str2 = [str1 substringToIndex:j];  
+  return str2;  
+}  
+
+//过滤获得的匹配信息的下标  
+-(int)indexByValue:(NSString *)str{  
+  //使用NSMutableString类，它可以实现追加  
+  NSMutableString *value = [[NSMutableString alloc] initWithFormat:@""];  
+  NSString *colum2 = @"";  
+  int j = 0;  
+  //遍历出下标值  
+  for(int i=1;i<[str length];i++){  
+    NSString *colum1 = [str substringFromIndex:i];  
+    [value appendString:colum2];  
+    colum2 = [colum1 substringToIndex:1];  
+    if([colum2 isEqualToString:@","]){  
+      j = [value intValue];  
+      break;  
+    }  
+  }  
+  [value release];  
+  return j;  
+}  
 
 -(void) buttonClicked {
   
@@ -344,4 +477,223 @@
                            error.localizedDescription];
 	[self.myWebView loadHTMLString:errorString baseURL:nil];
 }
+
+
+#pragma -
+
+-(NSArray*)getPagesOfString:(NSString *)cache withFont:(UIFont *)font inRect:(CGRect)r{
+  UILineBreakMode lineBreakMode = UILineBreakModeWordWrap;
+  //返回一个数组, 包含每一页的字符串开始点和长度(NSRange)  
+  NSMutableArray *ranges=[NSMutableArray array];  
+  //显示字体的行高  
+  CGFloat lineHeight=[@"Sample样本" sizeWithFont:font].height;  
+  NSInteger maxLine=floor(r.size.height/lineHeight);  
+  NSInteger totalLines=0;  
+  NSLog(@"Max Line Per Page: %d (%.2f/%.2f)",maxLine,r.size.height,lineHeight);  
+  NSString *lastParaLeft=nil;  
+  NSRange range=NSMakeRange(0, 0);  
+  //把字符串按段落分开, 提高解析效率  
+  NSArray *paragraphs=[cache componentsSeparatedByString:@"/n"];  
+  for (int p=0;p< [paragraphs count];p++) {  
+    NSString *para;  
+    if (lastParaLeft!=nil) {  
+      //上一页完成后剩下的内容继续计算  
+      para=lastParaLeft;  
+      lastParaLeft=nil;  
+    }else {  
+      para=[paragraphs objectAtIndex:p];  
+      if (p<[paragraphs count]-1)  
+        para=[para stringByAppendingString:@"/n"]; //刚才分段去掉了一个换行,现在还给它  
+    }  
+    CGSize paraSize=[para sizeWithFont:font  
+                     constrainedToSize:r.size  
+                         lineBreakMode:lineBreakMode];  
+    NSInteger paraLines=floor(paraSize.height/lineHeight);  
+    if (totalLines+paraLines<maxLine) {  
+      totalLines+=paraLines;  
+      range.length+=[para length];  
+      if (p==[paragraphs count]-1) {  
+        //到了文章的结尾 这一页也算  
+        [ranges addObject:[NSValue valueWithRange:range]];  
+        //IMILog(@”===========Page Over=============”);  
+      }  
+    }else if (totalLines+paraLines==maxLine) {  
+      //很幸运, 刚好一段结束,本页也结束, 有这个判断会提高一定的效率  
+      range.length+=[para length];  
+      [ranges addObject:[NSValue valueWithRange:range]];  
+      range.location+=range.length;  
+      range.length=0;  
+      totalLines=0;  
+      //IMILog(@”===========Page Over=============”);  
+    }else{  
+      //重头戏, 页结束时候本段文字还有剩余  
+      NSInteger lineLeft=maxLine-totalLines;  
+      CGSize tmpSize;  
+      NSInteger i;  
+      for (i=1; i<[para length]; i++) {  
+        //逐字判断是否达到了本页最大容量  
+        NSString *tmp=[para substringToIndex:i];  
+        tmpSize=[tmp sizeWithFont:font  
+                constrainedToSize:r.size  
+                    lineBreakMode:lineBreakMode];  
+        int nowLine=floor(tmpSize.height/lineHeight);  
+        if (lineLeft<nowLine) {  
+          //超出容量,跳出, 字符要回退一个, 应为当前字符已经超出范围了  
+          lastParaLeft=[para substringFromIndex:i-1];  
+          break;  
+        }  
+      }  
+      range.length+=i-1;  
+      [ranges addObject:[NSValue valueWithRange:range]];  
+      range.location+=range.length;  
+      range.length=0;  
+      totalLines=0;  
+      p--;  
+      //IMILog(@”===========Page Over=============”);  
+    }  
+  }  
+  return [NSArray arrayWithArray:ranges];  
+}  
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.  
+/*
+- (void)viewDidLoad2 {  
+  //[super viewDidLoad];  
+  
+  //  
+  totalPages = 0;  
+  currentPage = 0;  
+  
+  //  
+  textLabel.numberOfLines = 0;  
+  NSString *text;
+  //  
+ // if (!text) {  
+    // 从文件里加载文本串  
+  //  [self loadString];  
+    
+    // 计算文本串的大小尺寸  
+    CGSize totalTextSize = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE_MAX]  
+                            constrainedToSize:CGSizeMake(textLabel.frame.size.width, CGFLOAT_MAX)  
+                                lineBreakMode:UILineBreakModeWordWrap];  
+    
+    // 如果一页就能显示完，直接显示所有文本串即可。  
+    if (totalTextSize.height < textLabel.frame.size.height) {  
+      texttextLabel.text = text;  
+    }  
+    else {  
+      // 计算理想状态下的页面数量和每页所显示的字符数量，只是拿来作为参考值用而已！  
+      NSUInteger textLength = [text length];  
+      referTotalPages = (int)totalTextSize.height/(int)textLabel.frame.size.height+1;  
+      referCharatersPerPage = textLength/referTotalPages;  
+      
+      // 申请最终保存页面NSRange信息的数组缓冲区  
+      int maxPages = referTotalPages;  
+      rangeOfPages = (NSRange *)malloc(referTotalPages*sizeof(NSRange));  
+      memset(rangeOfPages, 0x0, referTotalPages*sizeof(NSRange));  
+      
+      // 页面索引  
+      int page = 0;  
+      
+      for (NSUInteger location = 0; location < textLength; ) {  
+        // 先计算临界点（尺寸刚刚超过UILabel尺寸时的文本串）  
+        NSRange range = NSMakeRange(location, referCharatersPerPage);  
+        
+        // reach end of text ?  
+        NSString *pageText;  
+        CGSize pageTextSize;  
+        
+        while (range.location + range.length < textLength) {  
+          pageText = [text substringWithRange:range];  
+          
+          pageTextSize = [pageText sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE_MAX]  
+                              constrainedToSize:CGSizeMake(textLabel.frame.size.width, CGFLOAT_MAX)  
+                                  lineBreakMode:UILineBreakModeWordWrap];  
+          
+          if (pageTextSize.height > textLabel.frame.size.height) {  
+            break;  
+          }  
+          else {  
+            range.length += referCharatersPerPage;  
+          }  
+        }  
+        
+        if (range.location + range.length >= textLength) {  
+          range.length = textLength - range.location;  
+        }  
+        
+        // 然后一个个缩短字符串的长度，当缩短后的字符串尺寸小于textLabel的尺寸时即为满足  
+        while (range.length > 0) {  
+          pageText = [text substringWithRange:range];  
+          
+          pageTextSize = [pageText sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE_MAX]  
+                              constrainedToSize:CGSizeMake(textLabel.frame.size.width, CGFLOAT_MAX)  
+                                  lineBreakMode:UILineBreakModeWordWrap];  
+          
+          if (pageTextSize.height <= textLabel.frame.size.height) {  
+            range.length = [pageText length];  
+            break;  
+          }  
+          else {  
+            range.length -= 2;  
+          }  
+        }  
+        
+        // 得到一个页面的显示范围  
+        if (page >= maxPages) {  
+          maxPages += 10;  
+          rangeOfPages = (NSRange *)realloc(rangeOfPages, maxPages*sizeof(NSRange));  
+        }  
+        rangeOfPages[page++] = range;  
+        
+        // 更新游标  
+        location += range.length;  
+      }  
+      
+      // 获取最终页面数量  
+      totalPages = page;  
+      
+      // 更新UILabel内容  
+      textLabel.text = [text substringWithRange:rangeOfPages[currentPage]];  
+    }  
+  }  
+  
+  // 显示当前页面进度信息，格式为："8/100"  
+  pageInfoLabel.text = [NSString stringWithFormat:@"%d/%d", currentPage+1, totalPages];  
+}  
+
+
+////////////////////////////////////////////////////////////////////////////////////////  
+// 上一页  
+- (IBAction)actionPrevious:(id)sender {  
+  if (currentPage > 0) {  
+    currentPage--;  
+    
+    NSRange range = rangeOfPages[currentPage];  
+    NSString *pageText = [text substringWithRange:range];  
+    
+    textLabel.text = pageText;  
+    
+    //  
+    pageInfoLabel.text = [NSString stringWithFormat:@"%d/%d", currentPage+1, totalPages];  
+  }  
+}  
+
+////////////////////////////////////////////////////////////////////////////////////////  
+// 下一页  
+- (IBAction)actionNext:(id)sender {  
+  if (currentPage < totalPages-1) {  
+    currentPage++;  
+    
+    NSRange range = rangeOfPages[currentPage];  
+    NSString *pageText = [text substringWithRange:range];  
+    
+    textLabel.text = pageText;  
+    
+    //  
+    pageInfoLabel.text = [NSString stringWithFormat:@"%d/%d", currentPage+1, totalPages];  
+  }  
+}  
+ */
 @end

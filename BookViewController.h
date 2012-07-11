@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTMLNode.h"
 
 @interface BookViewController : UIViewController <UIWebViewDelegate> {
   UIWebView *myWebView;
   NSString *sectionName;
 }
+/*
+@property int totalPages;
+@property int currentPage;
+@property UILabel *textLabel;*/
+
 @property (nonatomic,retain) UIWebView *myWebView;
 @property (nonatomic,retain) NSString *sectionName;
 -(void) buttonClicked ;

@@ -41,7 +41,6 @@
   return self;  
 }
 
-
 - (void) initContentView {
   //竖直方向滚动
   if(cycleDirection==PortraitDirection) {    

@@ -59,3 +59,9 @@
 
 // Toolbar height when printing is supported
 #define kToolbarHeight 48
+
+
+typedef enum _CycleDirection {  
+  PortraitDirection,
+  LandscapeDirection  
+} CycleDirection;

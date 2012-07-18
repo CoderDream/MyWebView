@@ -94,6 +94,8 @@
 		3F8E94DA159FF28E0026FD27 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E94D9159FF28D0026FD27 /* Reachability.m */; };
 		3F8E9768159FF6DD0026FD27 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8E9767159FF6DD0026FD27 /* SystemConfiguration.framework */; };
 		3F8E976C159FFE720026FD27 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3F8E976B159FFE720026FD27 /* config.xml */; };
+		3F9166C315AE707D0069B50E /* OneLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9166C215AE707D0069B50E /* OneLine.m */; };
+		3F93419515B6FFE9005721FE /* CycleUILabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93419415B6FFE9005721FE /* CycleUILabelView.m */; };
 		3F95BD8D15A08A6400ACB041 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F95BD8C15A08A6400ACB041 /* libxml2.2.dylib */; };
 		3F98225515A4725A00380CD9 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F98225115A4725A00380CD9 /* Default-Landscape~ipad.png */; };
 		3F98225615A4725A00380CD9 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F98225215A4725A00380CD9 /* Default-Portrait~ipad.png */; };
@@ -101,7 +103,6 @@
 		3F98225815A4725A00380CD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F98225415A4725A00380CD9 /* Default@2x.png */; };
 		3F98229A15A48E1100380CD9 /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F98229915A48E1100380CD9 /* BookViewController.m */; };
 		3FCF271E15AD5F24008DE758 /* section_0000.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF271515AD5F24008DE758 /* section_0000.txt */; };
-		3FCF271F15AD5F24008DE758 /* section_0001.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF271615AD5F24008DE758 /* section_0001.txt */; };
 		3FCF272015AD5F24008DE758 /* section_0002.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF271715AD5F24008DE758 /* section_0002.txt */; };
 		3FCF272115AD5F24008DE758 /* section_0003.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF271815AD5F24008DE758 /* section_0003.txt */; };
 		3FCF272215AD5F24008DE758 /* section_0004.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF271915AD5F24008DE758 /* section_0004.txt */; };
@@ -117,6 +118,8 @@
 		3FCF273F15AD8A4E008DE758 /* a003.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF273A15AD8A4E008DE758 /* a003.png */; };
 		3FCF274015AD8A4E008DE758 /* a004.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF273B15AD8A4E008DE758 /* a004.png */; };
 		3FCF274115AD8A4E008DE758 /* a005.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF273C15AD8A4E008DE758 /* a005.png */; };
+		3FD0CE5215AEBDB000BDEAE8 /* section_0001.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FD0CE5115AEBDB000BDEAE8 /* section_0001.txt */; };
+		3FD0CE5515AEBEEE00BDEAE8 /* CycleWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CE5415AEBEEE00BDEAE8 /* CycleWebView.m */; };
 		3FDB1AC615A0967600A8628A /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDB1AC515A0967600A8628A /* GDataXMLNode.m */; };
 		3FDD6E4D15AC6D2E0093591E /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDD6E4915AC6D2E0093591E /* HTMLNode.m */; };
 		3FDD6E4E15AC6D2E0093591E /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDD6E4B15AC6D2E0093591E /* HTMLParser.m */; };
@@ -227,6 +230,10 @@
 		3F8E94D9159FF28D0026FD27 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3F8E9767159FF6DD0026FD27 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3F8E976B159FFE720026FD27 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		3F9166C115AE707D0069B50E /* OneLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneLine.h; sourceTree = "<group>"; };
+		3F9166C215AE707D0069B50E /* OneLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneLine.m; sourceTree = "<group>"; };
+		3F93419315B6FFE9005721FE /* CycleUILabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleUILabelView.h; sourceTree = "<group>"; };
+		3F93419415B6FFE9005721FE /* CycleUILabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleUILabelView.m; sourceTree = "<group>"; };
 		3F95BD8C15A08A6400ACB041 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		3F98225115A4725A00380CD9 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		3F98225215A4725A00380CD9 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
@@ -235,7 +242,6 @@
 		3F98229815A48E1100380CD9 /* BookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookViewController.h; path = ../BookViewController.h; sourceTree = "<group>"; };
 		3F98229915A48E1100380CD9 /* BookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookViewController.m; path = ../BookViewController.m; sourceTree = "<group>"; };
 		3FCF271515AD5F24008DE758 /* section_0000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = section_0000.txt; sourceTree = "<group>"; };
-		3FCF271615AD5F24008DE758 /* section_0001.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = section_0001.txt; sourceTree = "<group>"; };
 		3FCF271715AD5F24008DE758 /* section_0002.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = section_0002.txt; sourceTree = "<group>"; };
 		3FCF271815AD5F24008DE758 /* section_0003.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = section_0003.txt; sourceTree = "<group>"; };
 		3FCF271915AD5F24008DE758 /* section_0004.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = section_0004.txt; sourceTree = "<group>"; };
@@ -252,6 +258,9 @@
 		3FCF273A15AD8A4E008DE758 /* a003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a003.png; sourceTree = "<group>"; };
 		3FCF273B15AD8A4E008DE758 /* a004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a004.png; sourceTree = "<group>"; };
 		3FCF273C15AD8A4E008DE758 /* a005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a005.png; sourceTree = "<group>"; };
+		3FD0CE5115AEBDB000BDEAE8 /* section_0001.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = section_0001.txt; sourceTree = "<group>"; };
+		3FD0CE5315AEBEEE00BDEAE8 /* CycleWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycleWebView.h; path = ../CycleWebView.h; sourceTree = "<group>"; };
+		3FD0CE5415AEBEEE00BDEAE8 /* CycleWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CycleWebView.m; path = ../CycleWebView.m; sourceTree = "<group>"; };
 		3FDB1AC415A0967600A8628A /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		3FDB1AC515A0967600A8628A /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		3FDD6E4815AC6D2E0093591E /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
@@ -438,11 +447,46 @@
 			path = image;
 			sourceTree = "<group>";
 		};
+		3F93419015B6FF45005721FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3FEC90F2159F527700109B53 /* AppDelegate.h */,
+				3FEC90F3159F527700109B53 /* AppDelegate.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3F93419115B6FF53005721FE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3F98229815A48E1100380CD9 /* BookViewController.h */,
+				3F98229915A48E1100380CD9 /* BookViewController.m */,
+				3FE257A115A715250047A722 /* ContentsViewController.h */,
+				3FE257A215A715250047A722 /* ContentsViewController.m */,
+				3FEC90F5159F527700109B53 /* ViewController.h */,
+				3FEC90F6159F527700109B53 /* ViewController.m */,
+				3FEC90F8159F527700109B53 /* ViewController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3F93419215B6FF8D005721FE /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				3FDB1AC415A0967600A8628A /* GDataXMLNode.h */,
+				3FDB1AC515A0967600A8628A /* GDataXMLNode.m */,
+				3F8E94D8159FF28D0026FD27 /* Reachability.h */,
+				3F8E94D9159FF28D0026FD27 /* Reachability.m */,
+				3FE257AD15A723290047A722 /* Constants.h */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		3FCF271415AD5F24008DE758 /* txt */ = {
 			isa = PBXGroup;
 			children = (
 				3FCF271515AD5F24008DE758 /* section_0000.txt */,
-				3FCF271615AD5F24008DE758 /* section_0001.txt */,
+				3FD0CE5115AEBDB000BDEAE8 /* section_0001.txt */,
 				3FCF271715AD5F24008DE758 /* section_0002.txt */,
 				3FCF271815AD5F24008DE758 /* section_0003.txt */,
 				3FCF271915AD5F24008DE758 /* section_0004.txt */,
@@ -467,11 +511,21 @@
 			name = TFHpple;
 			sourceTree = "<group>";
 		};
-		3FDD6E5015AC75870093591E /* New Group */ = {
+		3FDD6E5015AC75870093591E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3F93419315B6FFE9005721FE /* CycleUILabelView.h */,
+				3F93419415B6FFE9005721FE /* CycleUILabelView.m */,
+				3FCF272E15AD6603008DE758 /* Contents.h */,
+				3FCF272F15AD6603008DE758 /* Contents.m */,
+				3F9166C115AE707D0069B50E /* OneLine.h */,
+				3F9166C215AE707D0069B50E /* OneLine.m */,
+				3FCF273515AD8925008DE758 /* CycleView.h */,
+				3FCF273615AD8925008DE758 /* CycleView.m */,
+				3FD0CE5315AEBEEE00BDEAE8 /* CycleWebView.h */,
+				3FD0CE5415AEBEEE00BDEAE8 /* CycleWebView.m */,
 			);
-			name = "New Group";
+			name = View;
 			sourceTree = "<group>";
 		};
 		3FEC90D4159F527700109B53 = {
@@ -506,30 +560,15 @@
 		3FEC90E9159F527700109B53 /* MyWebView */ = {
 			isa = PBXGroup;
 			children = (
+				3F93419215B6FF8D005721FE /* Util */,
+				3F93419115B6FF53005721FE /* Controller */,
+				3F93419015B6FF45005721FE /* Model */,
 				3FCF271415AD5F24008DE758 /* txt */,
-				3FDD6E5015AC75870093591E /* New Group */,
+				3FDD6E5015AC75870093591E /* View */,
 				3FDD6E4615AC6D0E0093591E /* TFHpple */,
 				3F8E9307159FE7EE0026FD27 /* image */,
 				3F8E925F159FDE100026FD27 /* epub */,
 				3FF33218159F596F00FBDDEE /* webapp */,
-				3FCF273515AD8925008DE758 /* CycleView.h */,
-				3FCF273615AD8925008DE758 /* CycleView.m */,
-				3FE257AD15A723290047A722 /* Constants.h */,
-				3FCF272E15AD6603008DE758 /* Contents.h */,
-				3FCF272F15AD6603008DE758 /* Contents.m */,
-				3FEC90F2159F527700109B53 /* AppDelegate.h */,
-				3FEC90F3159F527700109B53 /* AppDelegate.m */,
-				3F98229815A48E1100380CD9 /* BookViewController.h */,
-				3F98229915A48E1100380CD9 /* BookViewController.m */,
-				3FE257A115A715250047A722 /* ContentsViewController.h */,
-				3FE257A215A715250047A722 /* ContentsViewController.m */,
-				3FEC90F5159F527700109B53 /* ViewController.h */,
-				3FEC90F6159F527700109B53 /* ViewController.m */,
-				3FEC90F8159F527700109B53 /* ViewController.xib */,
-				3FDB1AC415A0967600A8628A /* GDataXMLNode.h */,
-				3FDB1AC515A0967600A8628A /* GDataXMLNode.m */,
-				3F8E94D8159FF28D0026FD27 /* Reachability.h */,
-				3F8E94D9159FF28D0026FD27 /* Reachability.m */,
 				3F8E976B159FFE720026FD27 /* config.xml */,
 				3FEC90EA159F527700109B53 /* Supporting Files */,
 				3F30C55A15A5ED8A00A0C81D /* contents.plist */,
@@ -706,7 +745,6 @@
 				3FE257C415A7BAF90047A722 /* bg@2x.png in Resources */,
 				3FDD6E4F15AC6D2E0093591E /* README.md in Resources */,
 				3FCF271E15AD5F24008DE758 /* section_0000.txt in Resources */,
-				3FCF271F15AD5F24008DE758 /* section_0001.txt in Resources */,
 				3FCF272015AD5F24008DE758 /* section_0002.txt in Resources */,
 				3FCF272115AD5F24008DE758 /* section_0003.txt in Resources */,
 				3FCF272215AD5F24008DE758 /* section_0004.txt in Resources */,
@@ -719,6 +757,7 @@
 				3FCF273F15AD8A4E008DE758 /* a003.png in Resources */,
 				3FCF274015AD8A4E008DE758 /* a004.png in Resources */,
 				3FCF274115AD8A4E008DE758 /* a005.png in Resources */,
+				3FD0CE5215AEBDB000BDEAE8 /* section_0001.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +782,9 @@
 				3FDD6E5915AC75B80093591E /* XPathQuery.m in Sources */,
 				3FCF273015AD6603008DE758 /* Contents.m in Sources */,
 				3FCF273715AD8925008DE758 /* CycleView.m in Sources */,
+				3F9166C315AE707D0069B50E /* OneLine.m in Sources */,
+				3FD0CE5515AEBEEE00BDEAE8 /* CycleWebView.m in Sources */,
+				3F93419515B6FFE9005721FE /* CycleUILabelView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

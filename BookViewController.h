@@ -8,17 +8,18 @@
 
 #import <UIKit/UIKit.h>
 //#import "CycleScrollView.h"
-#import "CycleView.h"
-
+//#import "CycleWebView.h"
+//#import "OneLine.h"
+#import "CycleUILabelView.h"
 
 @interface BookViewController : UIViewController {
   //  CycleScrollView *myCycleScrollView;
   NSString *sectionName;
-  CycleView *myCycleView;
+  CycleUILabelView *myCycleUILabelView;
 }
 
 //@property (strong, nonatomic) CycleScrollView *myCycleScrollView;
-@property (strong, nonatomic) CycleView *myCycleView;
+@property (strong, nonatomic) CycleUILabelView *myCycleUILabelView;
 @property (strong, nonatomic) NSString *sectionName;
 
 -(void) buttonClicked;

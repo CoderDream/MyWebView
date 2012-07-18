@@ -11,7 +11,7 @@
 @implementation BookViewController
 
 //@synthesize myCycleScrollView = _myCycleScrollView;
-@synthesize myCycleView = _myCycleView;
+@synthesize myCycleUILabelView = _myCycleUILabelView;
 @synthesize sectionName = _sectionName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -60,6 +60,8 @@
   //stringWithContentsOfURL
   NSString *txtPath = [[[NSBundle mainBundle] bundlePath]
                        stringByAppendingPathComponent: self.sectionName];
+  
+  
   NSString *textFileContents = [NSString stringWithContentsOfFile:txtPath encoding:NSUTF8StringEncoding error: &error];
   
   //  NSString *textFileContents = [NSString stringWithContentsOfURL:[NSURL txtPath] encoding:NSUTF8StringEncoding error: &error];
@@ -72,22 +74,102 @@
   
   NSArray *lines = [textFileContents componentsSeparatedByString:@"\n"];
   NSLog(@"Number of lines in the file:%d", [lines count] );
+  // make many paragraphe
+  // NSString *secondParaContent = [lines objectAtIndex:1];
+  int oneLineSize = 10; 
+  
+  // NSArray *stringArray = [[NSArray alloc] arrayWithCapacity:times];
+  NSMutableArray *stringArray = [NSMutableArray array];
+  //  res = [str1 substringWithRange: NSMakeRange (8, 6)];
+  NSString *res;//
   NSInteger lineSize;
   NSInteger idx;
   for (idx = 0; idx < lines.count; idx++){
-    NSString *currentContent = [lines objectAtIndex:idx];
-    lineSize = [currentContent length];
+    NSString *currentLineContent = [lines objectAtIndex:idx];
+    lineSize = [currentLineContent length];
     //NSLog(@"%d: size: %d %@", idx, lineSize, currentContent);
-    NSLog(@"%d: size: %d", idx, lineSize);
+    // NSLog(@"%d: size: %d", idx, lineSize);
+    
+    NSUInteger lineLength = [currentLineContent length];
+    //  NSLog(@"line length: %u : %@", lineLength, currentLineContent);
+    NSInteger mod = lineLength % oneLineSize;
+    NSInteger times = lineLength / oneLineSize;
+    int begin = 0;
+    
+    int idxLine;
+    for (idxLine = 0; idxLine < times; idxLine++){
+      // NSString *currentContent = [lines objectAtIndex:idx];
+      // stringArray[idx] = res;
+      begin = idxLine * oneLineSize;
+      //NSLog(@"begin:  %d: ", begin);
+      res = [currentLineContent substringWithRange: NSMakeRange (begin, oneLineSize)];
+      //NSLog(@"size:  %d: count: %@", idxLine, res);
+      [stringArray addObject:res];
+      // lineSize = [currentContent length];
+      //NSLog(@"%d: size: %d %@", idx, lineSize, currentContent);
+      // NSLog(@"%d: size: %d", idx, lineSize);
+    }     
+    
+    if (0 != mod) {
+      // times += 1;
+      res = [currentLineContent substringWithRange: NSMakeRange (idxLine * oneLineSize, lineLength - idxLine * oneLineSize)];
+      [stringArray addObject:res];
+      //NSLog(@"size:  %d: count: %@", idxLine, res);
+    }
   }
   
-  NSString *secondLineContent = [lines objectAtIndex:1];
-
+  NSLog(@"### stringArray count: %d", [stringArray count]);
   
-  self.myCycleView = [[[CycleView alloc] initWithFrame:CGRectMake(0, 0, 320, 480) fileName:@"a00" pages:5 scrollDirection:LandscapeDirection] autorelease ];
-  [self.view addSubview:self.myCycleView];
+  // = [str1 substringWithRange: NSMakeRange (8, 6)];
+  /*
+   res = [secondLineContent substringWithRange: NSMakeRange (0, 50)];
+   NSLog(@"size:  1:    count: %@", res);
+   //res = [secondLineContent substringWithRange: NSMakeRange (0, 49)];
+   res = [secondLineContent substringWithRange: NSMakeRange (50, 50)];
+   NSLog(@"size:  2:    count: %@", res);
+   res = [secondLineContent substringWithRange: NSMakeRange (100, 50)];
+   //res = [secondLineContent substringWithRange: NSMakeRange (100, 149)];
+   NSLog(@"size:  3:    count: %@", res);
+   res = [secondLineContent substringWithRange: NSMakeRange (150, 50)];
+   //res = [secondLineContent substringWithRange: NSMakeRange (150, 199)];
+   NSLog(@"size:  4:    count: %@", res);
+   
+   
+   int begin;
+   
+   int idxLine;
+   for (idxLine = 0; idxLine < times; idxLine++){
+   // NSString *currentContent = [lines objectAtIndex:idx];
+   // stringArray[idx] = res;
+   begin = idxLine * lineSize;
+   NSLog(@"begin:  %d: ", begin);
+   res = [secondParaContent substringWithRange: NSMakeRange (begin, lineSize)];
+   NSLog(@"size:  %d: count: %@", idxLine, res);
+   [stringArray addObject:res];
+   // lineSize = [currentContent length];
+   //NSLog(@"%d: size: %d %@", idx, lineSize, currentContent);
+   // NSLog(@"%d: size: %d", idx, lineSize);
+   }   
+   
+   
+   if (0 != mod) {
+   // times += 1;
+   res = [secondParaContent substringWithRange: NSMakeRange (idxLine * lineSize, lineLength - idxLine * lineSize)];
+   [stringArray addObject:res];
+   NSLog(@"size:  %d: count: %@", idxLine, res);
+   }
+   */
+  //self.myCycleUILabelView = [[[CycleUILabelView alloc] initWithFrame:CGRectMake(0, 0, 320, 480) contentArray:stringArray pages:5 scrollDirection:LandscapeDirection] autorelease ];
+  // [self.view addSubview:self.myCycleUILabelView];
   
-  UIView *bottomView=[[ UIView alloc ]  initWithFrame :CGRectMake (0, 480-70, 360, 70 )];
+  //self.myCycleUILabelView = [[[CycleUILabelView alloc] initWithFrame:CGRectMake(0, 0, 320, 480) fileName:@"a00" pages:5 scrollDirection:LandscapeDirection] autorelease ];
+  //[self.view addSubview:self.myCycleUILabelView];
+  NSArray *contents= [[NSArray alloc] initWithObjects:
+                      @"One",@"Two",@"Three",@"Four",@"Five",@"Six",@"Seven",@"Eghit",nil];
+  self.myCycleUILabelView =  [[[CycleUILabelView alloc] initWithFrame:CGRectMake(0, 0, 320, 480) contentArray:contents scrollDirection:LandscapeDirection] autorelease];
+  [self.view addSubview:self.myCycleUILabelView];
+  
+  UIView *bottomView = [[ UIView alloc ]  initWithFrame :CGRectMake (0, 480-70, 360, 70 )];
   bottomView.backgroundColor=[ UIColor grayColor ];
   bottomView.alpha= 0.8 ;
   
@@ -102,12 +184,6 @@
   
   [backButton addTarget: self action :@selector (buttonClicked)forControlEvents: UIControlEventTouchUpInside ];
   [self. view addSubview :bottomView];
-
-  
-  //cycle.delegate = self;
-  // [self.view addSubview:cycle];
-  // [imagesArray release];
-  // [cycle release];
 }
 
 -(void) buttonClicked {

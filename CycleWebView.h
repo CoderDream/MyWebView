@@ -1,20 +1,20 @@
 //
-//  CycleView.h
-//  MyWebView02
+//  CycleWebView.h
+//  MyWebView
 //
-//  Created by Coder Dream on 12-7-8.
+//  Created by Coder Dream on 12-7-12.
 //  Copyright (c) 2012年 CoderDream's Studio. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "Constants.h"
 
-@interface CycleView : UIView {  
+@interface CycleWebView : UIView {
   UIView *contentView;
   
   CycleDirection cycleDirection; //滚动方向
   
-  NSString *fileName;
+ // NSString *fileName;
   
   int totalPage;  //循环滚动图片张数
   
@@ -32,9 +32,14 @@
   
   CGPoint curPoint;
   
-  CGPoint endPoint;  
+  CGPoint endPoint; 
+  
+  NSArray *contentArray;
 }
 
-- (id)initWithFrame:(CGRect)frame fileName:(NSString *)name pages:(int)pages scrollDirection:(CycleDirection)direction;
+//@property (strong, nonatomic) NSArray *contentArray;
+
+- (id)initWithFrame:(CGRect)frame contentArray:(NSArray *)stringArray pages:(int)pages scrollDirection:(CycleDirection)direction;
+;
 
 @end

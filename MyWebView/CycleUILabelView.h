@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Constants.h"
+#import "CDLabel.h"
+#import "MyLabel.h"
 
 @interface CycleUILabelView : UIView {
   UIView *contentView;  
@@ -23,10 +25,18 @@
   CGPoint curPoint;  
   CGPoint endPoint; 
   
+  MyLabel *preLabel;
+  MyLabel *curLabel;
+  MyLabel *lastLabel;
+  
   NSArray *contentArray;
+  
+  
 }
 
-- (id)initWithFrame:(CGRect)frame fileName:(NSString *)name pages:(int)pages scrollDirection:(CycleDirection)direction;
+@property (nonatomic, retain) MyLabel *preLabel;
+@property (nonatomic, retain) MyLabel *curLabel;
+@property (nonatomic, retain) MyLabel *lastLabel;
 
 - (id)initWithFrame:(CGRect)frame contentArray:(NSArray *)contents scrollDirection:(CycleDirection)direction;
 

@@ -97,11 +97,20 @@
 		3F9166C315AE707D0069B50E /* OneLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9166C215AE707D0069B50E /* OneLine.m */; };
 		3F93419515B6FFE9005721FE /* CycleUILabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93419415B6FFE9005721FE /* CycleUILabelView.m */; };
 		3F95BD8D15A08A6400ACB041 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F95BD8C15A08A6400ACB041 /* libxml2.2.dylib */; };
+		3F97768615B84A2C00BAF995 /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F97768515B84A2C00BAF995 /* FXLabel.m */; };
+		3F97768A15B84A8D00BAF995 /* CDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F97768915B84A8D00BAF995 /* CDLabel.m */; };
+		3F9776D015B942CF00BAF995 /* MyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9776CE15B942CE00BAF995 /* MyLabel.m */; };
+		3F9776D815B952D800BAF995 /* Arimo-Italic-Latin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9776D615B952D800BAF995 /* Arimo-Italic-Latin.ttf */; };
+		3F9776D915B952D800BAF995 /* Arimo-Regular-Latin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9776D715B952D800BAF995 /* Arimo-Regular-Latin.ttf */; };
 		3F98225515A4725A00380CD9 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F98225115A4725A00380CD9 /* Default-Landscape~ipad.png */; };
 		3F98225615A4725A00380CD9 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F98225215A4725A00380CD9 /* Default-Portrait~ipad.png */; };
 		3F98225715A4725A00380CD9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F98225315A4725A00380CD9 /* Default.png */; };
 		3F98225815A4725A00380CD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F98225415A4725A00380CD9 /* Default@2x.png */; };
 		3F98229A15A48E1100380CD9 /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F98229915A48E1100380CD9 /* BookViewController.m */; };
+		3F9C80C815B98C0200ACA9D8 /* STHeiti.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9C80C615B98C0200ACA9D8 /* STHeiti.ttf */; };
+		3F9C80C915B98C0200ACA9D8 /* STXihei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9C80C715B98C0200ACA9D8 /* STXihei.ttf */; };
+		3F9C80CD15B98FBF00ACA9D8 /* STHeiti-Light.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 3F9C80CB15B98FBF00ACA9D8 /* STHeiti-Light.ttc */; };
+		3F9C80CE15B98FBF00ACA9D8 /* STHeiti-Medium.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 3F9C80CC15B98FBF00ACA9D8 /* STHeiti-Medium.ttc */; };
 		3FCF271E15AD5F24008DE758 /* section_0000.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF271515AD5F24008DE758 /* section_0000.txt */; };
 		3FCF272015AD5F24008DE758 /* section_0002.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF271715AD5F24008DE758 /* section_0002.txt */; };
 		3FCF272115AD5F24008DE758 /* section_0003.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FCF271815AD5F24008DE758 /* section_0003.txt */; };
@@ -235,12 +244,25 @@
 		3F93419315B6FFE9005721FE /* CycleUILabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleUILabelView.h; sourceTree = "<group>"; };
 		3F93419415B6FFE9005721FE /* CycleUILabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleUILabelView.m; sourceTree = "<group>"; };
 		3F95BD8C15A08A6400ACB041 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		3F97768415B84A2C00BAF995 /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
+		3F97768515B84A2C00BAF995 /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		3F97768815B84A8D00BAF995 /* CDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDLabel.h; sourceTree = "<group>"; };
+		3F97768915B84A8D00BAF995 /* CDLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDLabel.m; sourceTree = "<group>"; };
+		3F9776CD15B942CD00BAF995 /* MyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLabel.h; sourceTree = "<group>"; };
+		3F9776CE15B942CE00BAF995 /* MyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLabel.m; sourceTree = "<group>"; };
+		3F9776CF15B942CE00BAF995 /* MyLabelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLabelDelegate.h; sourceTree = "<group>"; };
+		3F9776D615B952D800BAF995 /* Arimo-Italic-Latin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arimo-Italic-Latin.ttf"; sourceTree = "<group>"; };
+		3F9776D715B952D800BAF995 /* Arimo-Regular-Latin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arimo-Regular-Latin.ttf"; sourceTree = "<group>"; };
 		3F98225115A4725A00380CD9 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		3F98225215A4725A00380CD9 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		3F98225315A4725A00380CD9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3F98225415A4725A00380CD9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3F98229815A48E1100380CD9 /* BookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookViewController.h; path = ../BookViewController.h; sourceTree = "<group>"; };
 		3F98229915A48E1100380CD9 /* BookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookViewController.m; path = ../BookViewController.m; sourceTree = "<group>"; };
+		3F9C80C615B98C0200ACA9D8 /* STHeiti.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = STHeiti.ttf; sourceTree = "<group>"; };
+		3F9C80C715B98C0200ACA9D8 /* STXihei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = STXihei.ttf; sourceTree = "<group>"; };
+		3F9C80CB15B98FBF00ACA9D8 /* STHeiti-Light.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "STHeiti-Light.ttc"; sourceTree = "<group>"; };
+		3F9C80CC15B98FBF00ACA9D8 /* STHeiti-Medium.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "STHeiti-Medium.ttc"; sourceTree = "<group>"; };
 		3FCF271515AD5F24008DE758 /* section_0000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = section_0000.txt; sourceTree = "<group>"; };
 		3FCF271715AD5F24008DE758 /* section_0002.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = section_0002.txt; sourceTree = "<group>"; };
 		3FCF271815AD5F24008DE758 /* section_0003.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = section_0003.txt; sourceTree = "<group>"; };
@@ -482,6 +504,19 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
+		3F9776DA15B952DE00BAF995 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				3F9C80CB15B98FBF00ACA9D8 /* STHeiti-Light.ttc */,
+				3F9C80CC15B98FBF00ACA9D8 /* STHeiti-Medium.ttc */,
+				3F9776D615B952D800BAF995 /* Arimo-Italic-Latin.ttf */,
+				3F9776D715B952D800BAF995 /* Arimo-Regular-Latin.ttf */,
+				3F9C80C615B98C0200ACA9D8 /* STHeiti.ttf */,
+				3F9C80C715B98C0200ACA9D8 /* STXihei.ttf */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
 		3FCF271415AD5F24008DE758 /* txt */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +549,13 @@
 		3FDD6E5015AC75870093591E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3F9776CD15B942CD00BAF995 /* MyLabel.h */,
+				3F9776CE15B942CE00BAF995 /* MyLabel.m */,
+				3F9776CF15B942CE00BAF995 /* MyLabelDelegate.h */,
+				3F97768815B84A8D00BAF995 /* CDLabel.h */,
+				3F97768915B84A8D00BAF995 /* CDLabel.m */,
+				3F97768415B84A2C00BAF995 /* FXLabel.h */,
+				3F97768515B84A2C00BAF995 /* FXLabel.m */,
 				3F93419315B6FFE9005721FE /* CycleUILabelView.h */,
 				3F93419415B6FFE9005721FE /* CycleUILabelView.m */,
 				3FCF272E15AD6603008DE758 /* Contents.h */,
@@ -560,6 +602,7 @@
 		3FEC90E9159F527700109B53 /* MyWebView */ = {
 			isa = PBXGroup;
 			children = (
+				3F9776DA15B952DE00BAF995 /* Font */,
 				3F93419215B6FF8D005721FE /* Util */,
 				3F93419115B6FF53005721FE /* Controller */,
 				3F93419015B6FF45005721FE /* Model */,
@@ -758,6 +801,12 @@
 				3FCF274015AD8A4E008DE758 /* a004.png in Resources */,
 				3FCF274115AD8A4E008DE758 /* a005.png in Resources */,
 				3FD0CE5215AEBDB000BDEAE8 /* section_0001.txt in Resources */,
+				3F9776D815B952D800BAF995 /* Arimo-Italic-Latin.ttf in Resources */,
+				3F9776D915B952D800BAF995 /* Arimo-Regular-Latin.ttf in Resources */,
+				3F9C80C815B98C0200ACA9D8 /* STHeiti.ttf in Resources */,
+				3F9C80C915B98C0200ACA9D8 /* STXihei.ttf in Resources */,
+				3F9C80CD15B98FBF00ACA9D8 /* STHeiti-Light.ttc in Resources */,
+				3F9C80CE15B98FBF00ACA9D8 /* STHeiti-Medium.ttc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +834,9 @@
 				3F9166C315AE707D0069B50E /* OneLine.m in Sources */,
 				3FD0CE5515AEBEEE00BDEAE8 /* CycleWebView.m in Sources */,
 				3F93419515B6FFE9005721FE /* CycleUILabelView.m in Sources */,
+				3F97768615B84A2C00BAF995 /* FXLabel.m in Sources */,
+				3F97768A15B84A8D00BAF995 /* CDLabel.m in Sources */,
+				3F9776D015B942CF00BAF995 /* MyLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

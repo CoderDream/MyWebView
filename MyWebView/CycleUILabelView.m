@@ -19,26 +19,9 @@
 
 @implementation CycleUILabelView
 
-- (id)initWithFrame:(CGRect)frame fileName:(NSString*)name pages:(int)pages scrollDirection:(CycleDirection)direction {
-  
-  self = [super initWithFrame:frame];
-  
-  if (self) {    
-    curPage = 1;    
-    scrollCurPage = 1;    
-    pagePersent = 0.2;
-    
-    contentFrame = frame;    
-    fileName = name;  //循环图片的前缀名字    
-    totalPage = pages;
-    
-    cycleDirection = direction;     
-    [self initContentView];    
-    [self refreshContentView];    
-  }
-  
-  return self;  
-}
+@synthesize preLabel;
+@synthesize curLabel;
+@synthesize lastLabel;
 
 - (id)initWithFrame:(CGRect)frame contentArray:(NSArray *) contents scrollDirection:(CycleDirection)direction {
   
@@ -51,8 +34,36 @@
     
     contentFrame = frame;    
     //fileName = name;  //循环图片的前缀名字
-    contentArray = contents;
+    //Copy and sort     
+    
+    NSMutableArray *newArray = [[NSMutableArray alloc] init]; 
+    NSLog(@"oldArray:%@",contents);
+    NSInteger pageLines = 15;
+    //NSMutableString pageContent;
+    NSMutableString *pageContent = [[NSMutableString alloc] initWithString:@""];     
+    //[String1 appendString:@", I will be adding some character"];     
+      
+    for (int idx = 0; idx < contents.count; idx++){
+      NSString *currentLineContent = [contents objectAtIndex:idx];
+      
+      [pageContent appendFormat:[NSString stringWithFormat:currentLineContent]];
+      [pageContent appendFormat:[NSString stringWithFormat:@"\n"]];   
+     // NSString *urlString = [currentLineContent stringValue];  
+      if (0 < [currentLineContent length]) {   
+        //NSLog(@"NO INPUT." ); 
+        if(idx % pageLines == 0) {
+          [newArray addObject: pageContent];
+          pageContent = [[NSMutableString alloc] initWithString:@""];
+        }        
+      }      
+    }     
+    //[newArray sortUsingSelector:@selector(compare:)];     
+    //NSLog(@"newArray:%@", newArray); 
+    
+    contentArray = newArray;
+    //[newArray release];
     totalPage = [contentArray count];
+    NSLog(@"content line count: %d", totalPage);
     
     cycleDirection = direction;     
     [self initContentView];    
@@ -68,8 +79,7 @@
     contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, contentFrame.size.width, contentFrame.size.height*3)];//可以存储三张图片    
   }
   
-  if(cycleDirection == LandscapeDirection)  {
-    
+  if(cycleDirection == LandscapeDirection)  {    
     contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, contentFrame.size.width*3, contentFrame.size.height)];    
   }
   
@@ -79,7 +89,7 @@
     [contentView release];    
   }
   
-  contentView.backgroundColor = [UIColor redColor];  
+  contentView.backgroundColor = [UIColor redColor];
 }
 
 
@@ -92,232 +102,83 @@
   if([subViews count] != 0) {
     [subViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
   }
-  
-  
+    
   int prePage = [self getValidPage:curPage - 1];
   int lastPage = [self getValidPage:curPage + 1];
-   
-  //创建uilabel
-  UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 440)];
-  
-  //设置背景色
-  label1.backgroundColor = [UIColor grayColor];
-  
-  //设置tag
-  label1.tag = 91;  
-  
-  //设置标签文本字体和字体大小
-  label1.font = [UIFont fontWithName:@"Arial" size:30];
-  //设置文本对其方式
-  label1.textAlignment = UITextAlignmentCenter;
-  //文本对齐方式有以下三种
-  //typedef enum {
-  //    UITextAlignmentLeft = 0,左对齐
-  //    UITextAlignmentCenter,居中对齐
-  //    UITextAlignmentRight, 右对齐                 
-  //} UITextAlignment;
-  
-  //文本颜色
-  label1.textColor = [UIColor blueColor];
-  //超出label边界文字的截取方式
-  label1.lineBreakMode = UILineBreakModeTailTruncation;
-  //截取方式有以下6种
-  //typedef enum {       
-  //    UILineBreakModeWordWrap = 0,    以空格为边界，保留整个单词         
-  //    UILineBreakModeCharacterWrap,   保留整个字符         
-  //    UILineBreakModeClip,            到边界为止         
-  //    UILineBreakModeHeadTruncation,  省略开始，以……代替       
-  //    UILineBreakModeTailTruncation,  省略结尾，以……代替      
-  //    UILineBreakModeMiddleTruncation,省略中间，以……代替，多行时作用于最后一行       
-  //} UILineBreakMode;
-  
-  //文本文字自适应大小
-  label1.adjustsFontSizeToFitWidth = YES;
-  //当adjustsFontSizeToFitWidth=YES时候，如果文本font要缩小时
-  //baselineAdjustment这个值控制文本的基线位置，只有文本行数为1是有效
-  label1.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-  //有三种方式
-  //typedef enum {
-  //    UIBaselineAdjustmentAlignBaselines = 0, 默认值文本最上端于label中线对齐
-  //    UIBaselineAdjustmentAlignCenters,//文本中线于label中线对齐
-  //    UIBaselineAdjustmentNone,//文本最低端与label中线对齐
-  //} UIBaselineAdjustment;
-  
-  //文本最多行数，为0时没有最大行数限制
-  label1.numberOfLines = 2;
-  //最小字体，行数为1时有效，默认为0.0
-  label1.minimumFontSize = 10.0;
-  //文本高亮
-  label1.highlighted = YES;
-  //文本是否可变
-  label1.enabled = YES;
-  //去掉label背景色
-  //label1.backgroundColor = [UIColor clearColor];
-  
-  //文本阴影颜色
-  label1.shadowColor = [UIColor grayColor];
-  //阴影大小
-  label1.shadowOffset = CGSizeMake(1.0, 1.0);
-  
-  //是否能与用户交互
-  label1.userInteractionEnabled = YES;
-  
-  [contentView addSubview:label1];
-  [label1 release];
-  
-  
-  //创建uilabel
-  UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 440)];
-  
-  //设置背景色
-  label2.backgroundColor = [UIColor grayColor];
-  
-  //设置tag
-  label2.tag = 92;
-  
-  //设置标签文本字体和字体大小
-  label2.font = [UIFont fontWithName:@"Arial" size:30];
-  //设置文本对其方式
-  label2.textAlignment = UITextAlignmentCenter;
-  //文本对齐方式有以下三种
-  //typedef enum {
-  //    UITextAlignmentLeft = 0,左对齐
-  //    UITextAlignmentCenter,居中对齐
-  //    UITextAlignmentRight, 右对齐                 
-  //} UITextAlignment;
-  
-  //文本颜色
-  label2.textColor = [UIColor blueColor];
-  //超出label边界文字的截取方式
-  label2.lineBreakMode = UILineBreakModeTailTruncation;
-  //截取方式有以下6种
-  //typedef enum {       
-  //    UILineBreakModeWordWrap = 0,    以空格为边界，保留整个单词         
-  //    UILineBreakModeCharacterWrap,   保留整个字符         
-  //    UILineBreakModeClip,            到边界为止         
-  //    UILineBreakModeHeadTruncation,  省略开始，以……代替       
-  //    UILineBreakModeTailTruncation,  省略结尾，以……代替      
-  //    UILineBreakModeMiddleTruncation,省略中间，以……代替，多行时作用于最后一行       
-  //} UILineBreakMode;
-  
-  //文本文字自适应大小
-  label2.adjustsFontSizeToFitWidth = YES;
-  //当adjustsFontSizeToFitWidth=YES时候，如果文本font要缩小时
-  //baselineAdjustment这个值控制文本的基线位置，只有文本行数为1是有效
-  label2.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-  //有三种方式
-  //typedef enum {
-  //    UIBaselineAdjustmentAlignBaselines = 0, 默认值文本最上端于label中线对齐
-  //    UIBaselineAdjustmentAlignCenters,//文本中线于label中线对齐
-  //    UIBaselineAdjustmentNone,//文本最低端与label中线对齐
-  //} UIBaselineAdjustment;
-  
-  //文本最多行数，为0时没有最大行数限制
-  label2.numberOfLines = 2;
-  //最小字体，行数为1时有效，默认为0.0
-  label2.minimumFontSize = 10.0;
-  //文本高亮
-  label2.highlighted = YES;
-  //文本是否可变
-  label2.enabled = YES;
-  //去掉label背景色
-  //label2.backgroundColor = [UIColor clearColor];
-  
-  //文本阴影颜色
-  label2.shadowColor = [UIColor grayColor];
-  //阴影大小
-  label2.shadowOffset = CGSizeMake(1.0, 1.0);
-  
-  //是否能与用户交互
-  label2.userInteractionEnabled = YES;
-  
-  [contentView addSubview:label2];
-  [label2 release];
-  
-  //创建uilabel
-  UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 440)];
-  
-  //设置背景色
-  label3.backgroundColor = [UIColor grayColor];
-  
-  //设置tag
-  label3.tag = 93;
-  
-  //设置标签文本字体和字体大小
-  label3.font = [UIFont fontWithName:@"Arial" size:30];
-  //设置文本对其方式
-  label3.textAlignment = UITextAlignmentCenter;
-  //文本对齐方式有以下三种
-  //typedef enum {
-  //    UITextAlignmentLeft = 0,左对齐
-  //    UITextAlignmentCenter,居中对齐
-  //    UITextAlignmentRight, 右对齐                 
-  //} UITextAlignment;
-  
-  //文本颜色
-  label3.textColor = [UIColor blueColor];
-  //超出label边界文字的截取方式
-  label3.lineBreakMode = UILineBreakModeTailTruncation;
-  //截取方式有以下6种
-  //typedef enum {       
-  //    UILineBreakModeWordWrap = 0,    以空格为边界，保留整个单词         
-  //    UILineBreakModeCharacterWrap,   保留整个字符         
-  //    UILineBreakModeClip,            到边界为止         
-  //    UILineBreakModeHeadTruncation,  省略开始，以……代替       
-  //    UILineBreakModeTailTruncation,  省略结尾，以……代替      
-  //    UILineBreakModeMiddleTruncation,省略中间，以……代替，多行时作用于最后一行       
-  //} UILineBreakMode;
-  
-  //文本文字自适应大小
-  label3.adjustsFontSizeToFitWidth = YES;
-  //当adjustsFontSizeToFitWidth=YES时候，如果文本font要缩小时
-  //baselineAdjustment这个值控制文本的基线位置，只有文本行数为1是有效
-  label3.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-  //有三种方式
-  //typedef enum {
-  //    UIBaselineAdjustmentAlignBaselines = 0, 默认值文本最上端于label中线对齐
-  //    UIBaselineAdjustmentAlignCenters,//文本中线于label中线对齐
-  //    UIBaselineAdjustmentNone,//文本最低端与label中线对齐
-  //} UIBaselineAdjustment;
-  
-  //文本最多行数，为0时没有最大行数限制
-  label3.numberOfLines = 2;
-  //最小字体，行数为1时有效，默认为0.0
-  label3.minimumFontSize = 10.0;
-  //文本高亮
-  label3.highlighted = YES;
-  //文本是否可变
-  label3.enabled = YES;
-  //去掉label背景色
-  //label3.backgroundColor = [UIColor clearColor];
-  
-  //文本阴影颜色
-  label3.shadowColor = [UIColor grayColor];
-  //阴影大小
-  label3.shadowOffset = CGSizeMake(1.0, 1.0);
-  
-  //是否能与用户交互
-  label3.userInteractionEnabled = YES;
-  
-  [contentView addSubview:label3];
-  [label3 release];
-  
   
   //String
   NSMutableString *prePageStr = [contentArray objectAtIndex:prePage - 1];
+ NSMutableString *curPageStr = [contentArray objectAtIndex:curPage - 1];
+    NSMutableString *lastPageStr = [contentArray objectAtIndex:lastPage - 1];
+  
+  //创建uilabel
+  /*
+  CDLabel *label1 = [[CDLabel alloc] initWithFrame:CGRectMake(10, 10, 300, 440)];
+  CDLabel *label2 = [[CDLabel alloc] initWithFrame:CGRectMake(10, 10, 300, 440)];
+  CDLabel *label3 = [[CDLabel alloc] initWithFrame:CGRectMake(10, 10, 300, 440)];
+  label1.numberOfLines = 0;     // 不可少Label属性之一  
+  label1.lineBreakMode = UILineBreakModeCharacterWrap;
+  label2.numberOfLines = 0;     // 不可少Label属性之一  
+  label2.lineBreakMode = UILineBreakModeCharacterWrap;  
+  label3.numberOfLines = 0;     // 不可少Label属性之一  
+  label3.lineBreakMode = UILineBreakModeCharacterWrap;  
+  */
+  /*  CGSize prePageStrSize = [prePageStr sizeWithFont:[UIFont boldSystemFontOfSize:17.0f]
+                     constrainedToSize:CGSizeMake(280, 100) 
+                    lineBreakMode:UILineBreakModeCharacterWrap];   // str是要显示的字符串
+   */
+
+  UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 440)];
+  label1.text = prePageStr;  
+  //label1.backgroundColor = [UIColor clearColor];  
+  label1.font = [UIFont fontWithName:@"STHeiti-Medium" size:17.0f];  
+  label1.numberOfLines = 0;     // 不可少Label属性之一  
+  label1.lineBreakMode = UILineBreakModeCharacterWrap;    // 不可少Label属性之二
+  //label1.backgroundColor = [UIColor redColor];
+  label1.textColor = [UIColor yellowColor];
+  
+  UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 440)];
+  label2.text = curPageStr;  
+  //label2.backgroundColor = [UIColor clearColor];  
+  label2.font = [UIFont fontWithName:@"STHeiti-Medium" size:17.0f];   
+  label2.numberOfLines = 0;     // 不可少Label属性之一  
+  label2.lineBreakMode = UILineBreakModeCharacterWrap;    // 不可少Label属性之二
+  //label2.backgroundColor = [UIColor redColor];
+  label2.textColor = [UIColor yellowColor];
+
+  UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 440)];
+  label3.text = prePageStr;  
+  //label3.backgroundColor = [UIColor clearColor];  
+  label3.font = [UIFont fontWithName:@"STHeiti-Medium" size:17.0f];   
+  label3.numberOfLines = 0;     // 不可少Label属性之一  
+  label3.lineBreakMode = UILineBreakModeCharacterWrap;    // 不可少Label属性之二
+  //label3.backgroundColor = [UIColor redColor];
+  label3.textColor = [UIColor yellowColor];
+  
+  
+  label1.tag = 11;
+  label2.tag = 12;
+  label3.tag = 13;
   //设置标签文本
   label1.text = prePageStr;
-  
-  //设置标签文本
-  NSMutableString *curPageStr = [contentArray objectAtIndex:curPage - 1];
   label2.text = curPageStr;
-  
-  //设置标签文本
-  NSMutableString *lastPageStr = [contentArray objectAtIndex:lastPage - 1];
   label3.text = lastPageStr;
+  [contentView addSubview:label1];
+  [contentView addSubview:label2];
+  [contentView addSubview:label3];
+  [label1 release];
+  [label2 release];
+  [label3 release];  
+  
+  
+  //@synthesize preLabel;
+  //@synthesize curLabel;
+  //@synthesize lastLabel;
+    
+  NSLog(@"prePageStr: %@ ; curPageStr: %@ ; lastPageStr: %@ ; ", prePageStr, curPageStr, lastPageStr);
   
   /* */
-  if(cycleDirection==LandscapeDirection)  {
+  if(cycleDirection == LandscapeDirection)  {
     label1.frame=CGRectOffset(label1.frame, 0, 0);    
     label2.frame=CGRectOffset(label2.frame, contentFrame.size.width, 0);    
     label3.frame=CGRectOffset(label3.frame, contentFrame.size.width * 2, 0); 

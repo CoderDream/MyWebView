@@ -31,14 +31,21 @@
 		<string>armv7</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
-  <string>UIInterfaceOrientationLandscapeRight</string>
-  <key>UIInterfaceOrientation</key>
-  <array>
+	<string>UIInterfaceOrientationLandscapeRight</string>
+	<key>UIInterfaceOrientation</key>
+	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-  <key>UIStatusBarHidden</key>
-  <true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>STHeiti-Light.ttc</string>
+		<string>STHeiti-Medium.ttc</string>
+		<string>Arimo-Italic-Latin.ttf</string>
+		<string>Arimo-Regular-Latin.ttf</string>	
+  </array>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>
